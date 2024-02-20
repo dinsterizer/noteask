@@ -1,0 +1,72 @@
+name = "dinstack-api"
+main = "core/worker.ts"
+compatibility_date = "2024-02-19"
+compatibility_flags = ["nodejs_compat"]
+
+[placement]
+mode = "smart"
+
+# ------------------------------------------------------------------------------------------------------------
+
+[env.local.vars]
+WORKER_ENV = "development"
+WEB_BASE_URL = "https://localhost:4000/"
+LEMONSQUEEZY_STORE_ID = 62784
+LEMONSQUEEZY_PERSONAL_LIFETIME_ACCESS_VARIANT_ID = 202053
+LEMONSQUEEZY_TEAM_LIFETIME_ACCESS_VARIANT_ID = 256458
+POSTHOG_HOST = "https://us.posthog.com"
+POSTHOG_API_KEY = "phc_crWHQabJDjkR3ho9RLs8PY5lzut61EhMv7ghEKoIFwH"
+SUPPORT_EMAIL = "dinsterizer@gmail.com"
+CLERK_PUBLISHABLE_KEY = "pk_test_YXdha2Uta29hbGEtMC5jbGVyay5hY2NvdW50cy5kZXYk"
+
+
+[[env.local.r2_buckets]]
+binding = 'PUBLIC_BUCKET'
+bucket_name = 'dinstack-public-local'
+
+# ------------------------------------------------------------------------------------------------------------
+
+[env.preview.route]
+pattern = "dinstack-api-preview.dinsterizer.com"
+custom_domain = true
+
+[env.preview.vars]
+WORKER_ENV = "development"
+WEB_BASE_URL = "https://dinstack-web-preview.dinsterizer.com/"
+LEMONSQUEEZY_STORE_ID = 62787
+LEMONSQUEEZY_PERSONAL_LIFETIME_ACCESS_VARIANT_ID = 202054
+LEMONSQUEEZY_TEAM_LIFETIME_ACCESS_VARIANT_ID = 256465
+POSTHOG_HOST = "https://us.posthog.com"
+POSTHOG_API_KEY = "phc_gklhvpYMslkQq2pki2H4TuG53uAfSViDll6fJN7C8Ny"
+SUPPORT_EMAIL = "dinsterizer@gmail.com"
+CLERK_PUBLISHABLE_KEY = "pk_test_YXdha2Uta29hbGEtMC5jbGVyay5hY2NvdW50cy5kZXYk"
+
+[[env.preview.r2_buckets]]
+binding = 'PUBLIC_BUCKET'
+bucket_name = 'dinstack-public-preview'
+
+# ------------------------------------------------------------------------------------------------------------
+
+# [env.production]
+# logpush = true
+
+[env.production.route]
+pattern = "dinstack-api.dinsterizer.com"
+custom_domain = true
+
+[env.production.vars]
+WORKER_ENV = "production"
+WEB_BASE_URL = "https://dinstack-web.dinsterizer.com/"
+LEMONSQUEEZY_STORE_ID = 62788
+LEMONSQUEEZY_PERSONAL_LIFETIME_ACCESS_VARIANT_ID = 202055
+LEMONSQUEEZY_TEAM_LIFETIME_ACCESS_VARIANT_ID = 256466
+POSTHOG_HOST = "https://us.posthog.com"
+POSTHOG_API_KEY = "phc_jkWq40BEKkhB00QCm00j5Oc9uxmvA0YObvGdv5Hnr92"
+SUPPORT_EMAIL = "dinsterizer@gmail.com"
+CLERK_PUBLISHABLE_KEY = "pk_live_Y2xlcmsuZGluc3Rlcml6ZXIuY29tJA"
+
+[[env.production.r2_buckets]]
+binding = 'PUBLIC_BUCKET'
+bucket_name = 'dinstack-public-production'
+
+# ------------------------------------------------------------------------------------------------------------

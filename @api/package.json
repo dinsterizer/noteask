@@ -1,0 +1,39 @@
+{
+  "name": "@dinstack/api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev --env local --port 8000",
+    "dev:extension": "pnpm run dev",
+    "dev:web": "pnpm run dev",
+    "build": "tsc --build && tsc-alias",
+    "preview": "wrangler dev --env local --port 8000",
+    "typecheck": "tsc --noEmit",
+    "db:push": "drizzle-kit push:mysql",
+    "db:studio": "drizzle-kit studio",
+    "deploy:preview": "wrangler deploy --env preview",
+    "deploy:production": "wrangler deploy --env production"
+  },
+  "dependencies": {
+    "@clerk/backend": "^0.37.3",
+    "@knocklabs/node": "^0.6.1",
+    "@lemonsqueezy/lemonsqueezy.js": "1.2.2",
+    "@planetscale/database": "^1.16.0",
+    "@trpc/server": "11.0.0-next-beta.248",
+    "drizzle-orm": "^0.29.3",
+    "hono": "^3.12.6",
+    "posthog-node": "^3.5.0",
+    "superjson": "^2.2.1",
+    "svix": "^1.16.0",
+    "ts-expect": "^1.3.0",
+    "ts-pattern": "^5.0.6",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20231218.0",
+    "@total-typescript/ts-reset": "^0.5.1",
+    "@types/node": "^20.11.13",
+    "drizzle-kit": "^0.20.14",
+    "mysql2": "^3.9.1"
+  }
+}

@@ -1,0 +1,11 @@
+.*/
+dist/
+dev-dist/
+build/
+out/
+!.vscode/
+!.github/
+
+
+**.md
+pnpm-lock.yaml
