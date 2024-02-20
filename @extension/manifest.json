@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Dinstack - browser extension",
+  "name": "Noteask - browser extension",
   "version": "1.0.0",
-  "homepage_url": "https://dinsterizer.com",
+  "homepage_url": "https://noteask.com",
   "icons": {
     "16": "icon-16.png",
     "32": "icon-32.png",
@@ -11,7 +11,7 @@
   },
   "permissions": ["sidePanel", "contextMenus", "storage"],
   "externally_connectable": {
-    "matches": ["https://localhost:4000/*", "https://*.dinsterizer.com/*"]
+    "matches": ["https://localhost:4000/*", "https://*.noteask.com/*"]
   },
   "content_scripts": [
     {

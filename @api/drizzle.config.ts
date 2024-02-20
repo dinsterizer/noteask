@@ -7,7 +7,7 @@ export default {
   dbCredentials: {
     uri: process.env.DATABASE_URL!,
   },
-  tablesFilter: ['dinstack_*'],
+  tablesFilter: ['noteask_*'],
   strict: true,
   verbose: true,
 } satisfies Config

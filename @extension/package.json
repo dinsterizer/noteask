@@ -1,5 +1,5 @@
 {
-  "name": "@dinstack/extension",
+  "name": "@noteask/extension",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,7 +13,7 @@
     "deploy:production": "env-cmd -f ../@web/.env.production vite build"
   },
   "dependencies": {
-    "@web": "workspace:@dinstack/web@^",
+    "@web": "workspace:@noteask/web@^",
     "lucide-react": "^0.302.0",
     "oslo": "^1.0.3",
     "react": "^18.2.0",

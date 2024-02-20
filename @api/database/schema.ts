@@ -5,7 +5,7 @@ import { mysqlTableCreator, timestamp, serial, varchar } from 'drizzle-orm/mysql
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  * @see https://orm.drizzle.team/kit-docs/conf#multi-project-schema
  */
-const mysqlTable = mysqlTableCreator((name) => `dinstack_${name}`)
+const mysqlTable = mysqlTableCreator((name) => `noteask_${name}`)
 
 export const Users = mysqlTable('users', {
   id: serial('id'),

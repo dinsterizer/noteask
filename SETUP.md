@@ -118,7 +118,7 @@ Required for `@api`  `@content`  `@web`  `Github Action` . Used for deploying
 
 
 
-- [ ] Create the following Cloudflare Pages with names: `dinstack-content-preview` , `dinstack-content-production` , `dinstack-web-preview` , and `dinstack-web-production` 
+- [ ] Create the following Cloudflare Pages with names: `noteask-content-preview` , `noteask-content-production` , `noteask-web-preview` , and `noteask-web-production` 
 > `Workers & Pages`  -> `Pages`  -> `Create using direct upload` -> `Create Project` 
 
 > `Pages` need to create mannually but `Workers` will be auto-create when run deploy command

@@ -20,7 +20,7 @@ export function LogoDropdownMenu({ children, ...props }: { children: React.React
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <a href="https://github.com/dinsterizer/dinstack">
+          <a href="https://github.com/dinsterizer/noteask">
             <GithubIcon className="mr-2 h-4 w-4" />
             <span>Github</span>
           </a>

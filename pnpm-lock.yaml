@@ -118,7 +118,7 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(astro@4.2.1)
       '@web':
-        specifier: workspace:@dinstack/web@^
+        specifier: workspace:@noteask/web@^
         version: link:../@web
       astro:
         specifier: ^4.2.1
@@ -194,7 +194,7 @@ importers:
   '@extension':
     dependencies:
       '@web':
-        specifier: workspace:@dinstack/web@^
+        specifier: workspace:@noteask/web@^
         version: link:../@web
       lucide-react:
         specifier: ^0.302.0
@@ -264,7 +264,7 @@ importers:
   '@web':
     dependencies:
       '@api':
-        specifier: workspace:@dinstack/api@^
+        specifier: workspace:@noteask/api@^
         version: link:../@api
       '@clerk/clerk-react':
         specifier: 5.0.0-beta-v5.18

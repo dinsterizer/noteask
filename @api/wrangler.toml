@@ -1,4 +1,4 @@
-name = "dinstack-api"
+name = "noteask-api"
 main = "core/worker.ts"
 compatibility_date = "2024-02-19"
 compatibility_flags = ["nodejs_compat"]
@@ -11,39 +11,39 @@ mode = "smart"
 [env.local.vars]
 WORKER_ENV = "development"
 WEB_BASE_URL = "https://localhost:4000/"
-LEMONSQUEEZY_STORE_ID = 62784
-LEMONSQUEEZY_PERSONAL_LIFETIME_ACCESS_VARIANT_ID = 202053
-LEMONSQUEEZY_TEAM_LIFETIME_ACCESS_VARIANT_ID = 256458
+LEMONSQUEEZY_STORE_ID = 71160
+LEMONSQUEEZY_PERSONAL_LIFETIME_ACCESS_VARIANT_ID = 258991
+LEMONSQUEEZY_TEAM_LIFETIME_ACCESS_VARIANT_ID = 258993
 POSTHOG_HOST = "https://us.posthog.com"
-POSTHOG_API_KEY = "phc_crWHQabJDjkR3ho9RLs8PY5lzut61EhMv7ghEKoIFwH"
+POSTHOG_API_KEY = "phc_xV2WQPwoKEeuntgAvOBmfCnapTg7F0PIXTWGNKqpBzf"
 SUPPORT_EMAIL = "dinsterizer@gmail.com"
-CLERK_PUBLISHABLE_KEY = "pk_test_YXdha2Uta29hbGEtMC5jbGVyay5hY2NvdW50cy5kZXYk"
+CLERK_PUBLISHABLE_KEY = "pk_test_Y2hpZWYtY29sdC05OC5jbGVyay5hY2NvdW50cy5kZXYk"
 
 
 [[env.local.r2_buckets]]
 binding = 'PUBLIC_BUCKET'
-bucket_name = 'dinstack-public-local'
+bucket_name = 'noteask-public-local'
 
 # ------------------------------------------------------------------------------------------------------------
 
 [env.preview.route]
-pattern = "dinstack-api-preview.dinsterizer.com"
+pattern = "preview.api.noteask.com"
 custom_domain = true
 
 [env.preview.vars]
 WORKER_ENV = "development"
-WEB_BASE_URL = "https://dinstack-web-preview.dinsterizer.com/"
-LEMONSQUEEZY_STORE_ID = 62787
-LEMONSQUEEZY_PERSONAL_LIFETIME_ACCESS_VARIANT_ID = 202054
-LEMONSQUEEZY_TEAM_LIFETIME_ACCESS_VARIANT_ID = 256465
+WEB_BASE_URL = "https://preview.app.noteask.com/"
+LEMONSQUEEZY_STORE_ID = 71157
+LEMONSQUEEZY_PERSONAL_LIFETIME_ACCESS_VARIANT_ID = 258985
+LEMONSQUEEZY_TEAM_LIFETIME_ACCESS_VARIANT_ID = 258986
 POSTHOG_HOST = "https://us.posthog.com"
-POSTHOG_API_KEY = "phc_gklhvpYMslkQq2pki2H4TuG53uAfSViDll6fJN7C8Ny"
+POSTHOG_API_KEY = "phc_QmK2BtdmITfPpNviFvKXfrifO4kCwJe1bXX2VwyUwwc"
 SUPPORT_EMAIL = "dinsterizer@gmail.com"
-CLERK_PUBLISHABLE_KEY = "pk_test_YXdha2Uta29hbGEtMC5jbGVyay5hY2NvdW50cy5kZXYk"
+CLERK_PUBLISHABLE_KEY = "pk_test_Y2hpZWYtY29sdC05OC5jbGVyay5hY2NvdW50cy5kZXYk"
 
 [[env.preview.r2_buckets]]
 binding = 'PUBLIC_BUCKET'
-bucket_name = 'dinstack-public-preview'
+bucket_name = 'noteask-public-preview'
 
 # ------------------------------------------------------------------------------------------------------------
 
@@ -51,22 +51,22 @@ bucket_name = 'dinstack-public-preview'
 # logpush = true
 
 [env.production.route]
-pattern = "dinstack-api.dinsterizer.com"
+pattern = "api.noteask.com"
 custom_domain = true
 
 [env.production.vars]
 WORKER_ENV = "production"
-WEB_BASE_URL = "https://dinstack-web.dinsterizer.com/"
-LEMONSQUEEZY_STORE_ID = 62788
-LEMONSQUEEZY_PERSONAL_LIFETIME_ACCESS_VARIANT_ID = 202055
-LEMONSQUEEZY_TEAM_LIFETIME_ACCESS_VARIANT_ID = 256466
+WEB_BASE_URL = "https://app.noteask.com/"
+LEMONSQUEEZY_STORE_ID = 71156
+LEMONSQUEEZY_PERSONAL_LIFETIME_ACCESS_VARIANT_ID = 258979
+LEMONSQUEEZY_TEAM_LIFETIME_ACCESS_VARIANT_ID = 258980
 POSTHOG_HOST = "https://us.posthog.com"
-POSTHOG_API_KEY = "phc_jkWq40BEKkhB00QCm00j5Oc9uxmvA0YObvGdv5Hnr92"
+POSTHOG_API_KEY = "phc_2Rqwzfz7qYslZPs4Wb8iWLePuNH67jBT0tP1j95snyw"
 SUPPORT_EMAIL = "dinsterizer@gmail.com"
-CLERK_PUBLISHABLE_KEY = "pk_live_Y2xlcmsuZGluc3Rlcml6ZXIuY29tJA"
+CLERK_PUBLISHABLE_KEY = "pk_live_Y2xlcmsubm90ZWFzay5jb20k"
 
 [[env.production.r2_buckets]]
 binding = 'PUBLIC_BUCKET'
-bucket_name = 'dinstack-public-production'
+bucket_name = 'noteask-public-production'
 
 # ------------------------------------------------------------------------------------------------------------

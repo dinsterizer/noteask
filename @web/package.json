@@ -1,5 +1,5 @@
 {
-  "name": "@dinstack/web",
+  "name": "@noteask/web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,11 +11,11 @@
     "ui:add": "pnpm dlx shadcn-ui@latest add -y",
     "preview": "env-cmd -f .env.local vite build && vite preview --port 4000",
     "typecheck": "tsc --noEmit",
-    "deploy:preview": "env-cmd -f .env.preview vite build && wrangler pages deploy --project-name=dinstack-web-preview --branch=main ./dist",
-    "deploy:production": "env-cmd -f .env.production vite build && wrangler pages deploy --project-name=dinstack-web-production --branch=main ./dist"
+    "deploy:preview": "env-cmd -f .env.preview vite build && wrangler pages deploy --project-name=noteask-web-preview --branch=main ./dist",
+    "deploy:production": "env-cmd -f .env.production vite build && wrangler pages deploy --project-name=noteask-web-production --branch=main ./dist"
   },
   "dependencies": {
-    "@api": "workspace:@dinstack/api@^",
+    "@api": "workspace:@noteask/api@^",
     "@clerk/clerk-react": "5.0.0-beta-v5.18",
     "@clerk/themes": "2.0.0-beta-v5.3",
     "@knocklabs/client": "^0.8.17",

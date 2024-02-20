@@ -1,5 +1,5 @@
 {
-  "name": "@dinstack/monorepo",
+  "name": "@noteask/monorepo",
   "private": true,
   "packageManager": "pnpm@8.6.10",
   "scripts": {

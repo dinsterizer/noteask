@@ -20,8 +20,8 @@ export default defineConfig({
       filename: 'sw.ts',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
-        name: 'Dinstack - web',
-        short_name: 'Dinstack',
+        name: 'Noteask - web',
+        short_name: 'Noteask',
         description: 'Ultimate typescript saas starter kit',
         icons: [
           {
