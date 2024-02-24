@@ -2,6 +2,8 @@ import { Logo } from '../logo'
 import { NotificationButton } from '../notification-button'
 import { ThemeToggle } from '../theme-toggle'
 import { Button } from '../ui/button'
+import { DropdownMenuTrigger } from '../ui/dropdown-menu'
+import { LogoDropdownMenu } from './logo-dropdown-menu'
 import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react'
 import { env } from '@web/lib/env'
 import { cn } from '@web/lib/utils'
@@ -18,15 +20,17 @@ export function RevealMenu({ showNotificationButton = false }: Props) {
       <div className="flex items-center justify-between">
         <div>
           <Button variant={'link'} size={'sm'} className="h-6 px-1" asChild>
-            <Link to={'/'}>
-              <span className="sr-only">Homepage</span>
-              <div className="hidden @md:block">
-                <Logo size={16} />
-              </div>
-              <div className="block @md:hidden">
-                <Logo variant="icon" size={16} />
-              </div>
-            </Link>
+            <LogoDropdownMenu>
+              <DropdownMenuTrigger>
+                <span className="sr-only">Homepage</span>
+                <div className="hidden @md:block">
+                  <Logo size={16} />
+                </div>
+                <div className="block @md:hidden">
+                  <Logo variant="icon" size={16} />
+                </div>
+              </DropdownMenuTrigger>
+            </LogoDropdownMenu>
           </Button>
         </div>
 

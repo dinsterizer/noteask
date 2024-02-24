@@ -45,4 +45,4 @@ export function parseMessageFromTRPCClientError(
   return message
 }
 
-export type ApiOutputs = AppRouterOutputs
+export type TRPCOutputs = AppRouterOutputs

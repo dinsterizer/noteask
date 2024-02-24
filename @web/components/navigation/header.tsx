@@ -1,18 +1,15 @@
 import { Logo } from '../logo'
-import { LogoDropdownMenu } from './logo-dropdown-menu'
 import { OrganizationSwitcher, UserButton } from '@clerk/clerk-react'
-import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu'
 import { cn } from '@web/lib/utils'
+import { Link } from 'react-router-dom'
 
 export function Header() {
   return (
     <header className="flex items-center justify-between gap-2">
       <div className="flex items-center">
-        <LogoDropdownMenu>
-          <DropdownMenuTrigger>
-            <Logo size={24} variant="icon" />
-          </DropdownMenuTrigger>
-        </LogoDropdownMenu>
+        <Link to="/">
+          <Logo size={24} variant="icon" />
+        </Link>
         <span className="text-muted-foreground/50 px-3 font-thin">|</span>
         <OrganizationSwitcher
           appearance={{
