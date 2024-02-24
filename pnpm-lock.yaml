@@ -272,6 +272,9 @@ importers:
       '@clerk/themes':
         specifier: 2.0.0-beta-v5.3
         version: 2.0.0-beta-v5.3(react-dom@18.2.0)(react@18.2.0)
+      '@formkit/tempo':
+        specifier: ^0.0.11
+        version: 0.0.11
       '@knocklabs/client':
         specifier: ^0.8.17
         version: 0.8.17(react@18.2.0)
@@ -2909,6 +2912,10 @@ packages:
       react: '>=16.8.0'
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /@formkit/tempo@0.0.11:
+    resolution: {integrity: sha512-6eI3cn4T4tKPH9LLzXPZcvJRuscW/DzbEbv4VfG3bxcyGz9ayBqphY4CIqP640TO+jhckD/+NfViublpf3gLFA==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.13:

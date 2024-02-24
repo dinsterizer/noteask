@@ -1,14 +1,11 @@
 import { Header } from '@web/components/navigation/header'
-import { NoteCard } from '@web/components/note/card'
+import { NoteList } from '@web/components/note/list'
 import { SubscriptionCard } from '@web/components/subscription-card'
-import { Button } from '@web/components/ui/button'
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@web/components/ui/resizable'
 import { WithRevealMenuLayout } from '@web/layouts/with-reveal-menu'
-import { trpc } from '@web/lib/trpc'
 import { Helmet } from 'react-helmet-async'
-import { Link, Outlet, useNavigate, useOutlet } from 'react-router-dom'
+import { Outlet, useOutlet } from 'react-router-dom'
 import { useMedia } from 'react-use'
-import { match } from 'ts-pattern'
 
 export function Component() {
   const outlet = useOutlet()
@@ -31,10 +28,6 @@ export function Component() {
                 </div>
 
                 <div className="pt-8">
-                  <AddNoteButton />
-                </div>
-
-                <div className="pt-8">
                   <NoteList />
                 </div>
 
@@ -53,41 +46,4 @@ export function Component() {
       </ResizablePanelGroup>
     </>
   )
-}
-
-function AddNoteButton() {
-  const navigate = useNavigate()
-
-  return (
-    <Button
-      variant={'secondary'}
-      className="w-full"
-      type="button"
-      onClick={() => {
-        navigate(`/notes/${crypto.randomUUID()}/edit?new`)
-      }}
-    >
-      Add Note
-    </Button>
-  )
-}
-
-function NoteList() {
-  const query = trpc.note.list.useQuery({}, {})
-
-  return match(query)
-    .with({ status: 'pending' }, () => 'TODO pending')
-    .with({ status: 'error' }, () => 'TODO error')
-    .with({ status: 'success' }, (query) => (
-      <ul className="grid grid-cols-4 gap-4">
-        {query.data.items.map((note) => {
-          return (
-            <li key={note.id} className="shadow rounded">
-              <NoteCard note={note} />
-            </li>
-          )
-        })}
-      </ul>
-    ))
-    .exhaustive()
 }

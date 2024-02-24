@@ -9,12 +9,12 @@ export function WithRevealMenuLayout(props: { children?: React.ReactNode }) {
   const revealMenuRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
-    if (props.children) return
-
     if (!containerRef.current) return
     if (!revealMenuRef.current) return
     const outer = containerRef.current.childNodes[1] as HTMLDivElement | undefined
     if (!outer) return
+
+    if (outer.scrollTop > revealMenuRef.current.clientHeight) return
 
     outer.scrollTo({
       top: revealMenuRef.current.clientHeight,

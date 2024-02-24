@@ -6,7 +6,6 @@ import { useSearchParam } from '@web/hooks/use-search-param'
 import { WithPageMenuLayout } from '@web/layouts/with-page-menu'
 import { useTenant } from '@web/lib/auth'
 import { trpc } from '@web/lib/trpc'
-import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { match } from 'ts-pattern'
 import { z } from 'zod'
@@ -16,7 +15,7 @@ export function Component() {
   const tenant = useTenant()
 
   const [paramNew, setParamNew] = useSearchParam('new')
-  const [isEnabledQuery] = useState(paramNew === null)
+  const isEnabledQuery = paramNew === null
 
   const query = trpc.note.detail.useQuery(
     {
@@ -66,23 +65,25 @@ export function Component() {
   }
 
   return (
-    <ResizablePanel>
+    <ResizablePanel minSize={50}>
       <WithPageMenuLayout>
-        {match(query)
-          .with({ status: 'pending' }, () => 'TODO pending')
-          .with({ status: 'error' }, () => 'TODO error')
-          .with({ status: 'success' }, (query) => {
-            return (
-              <form onSubmit={onSubmit}>
-                <Input placeholder="Untitled" />
+        <div className="p-4">
+          {match(query)
+            .with({ status: 'pending' }, () => 'TODO pending')
+            .with({ status: 'error' }, () => 'TODO error')
+            .with({ status: 'success' }, (query) => {
+              return (
+                <form onSubmit={onSubmit} className="space-y-2">
+                  <Input placeholder="Untitled" />
 
-                <Textarea placeholder="Type something..." />
+                  <Textarea placeholder="Type something..." />
 
-                <Button>Save</Button>
-              </form>
-            )
-          })
-          .exhaustive()}
+                  <Button>Save</Button>
+                </form>
+              )
+            })
+            .exhaustive()}
+        </div>
       </WithPageMenuLayout>
     </ResizablePanel>
   )

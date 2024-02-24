@@ -5,10 +5,10 @@ export function WithPageMenuLayout(props: { children?: React.ReactNode }) {
   return (
     <div>
       <ScrollArea className="h-screen">
-        <div className="container">
+        <div className="container p-4">
           <PageMenu />
         </div>
-        <div className="min-h-screen pb-8">{props.children ? props.children : <Outlet />}</div>
+        <div>{props.children ? props.children : <Outlet />}</div>
       </ScrollArea>
     </div>
   )
