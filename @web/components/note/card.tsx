@@ -1,5 +1,5 @@
 import { Skeleton } from '../ui/skeleton'
-import { Notes } from '@api/database/schema'
+import type { Notes } from '@api/database/schema'
 import { format } from '@formkit/tempo'
 import { Link } from 'react-router-dom'
 

@@ -12,7 +12,7 @@ export function NoteQuery() {
         id,
       })
     },
-    onSuccess({ id, data }) {
+    onSuccess({ id }) {
       // TODO: add created note to list query
 
       toast.success('Your note has been created successfully!', {

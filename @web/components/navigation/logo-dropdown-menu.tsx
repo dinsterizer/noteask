@@ -20,20 +20,20 @@ export function LogoDropdownMenu({ children, ...props }: { children: React.React
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <a href={env.CONTENT_BASE_URL} target="_blank">
+          <a href={env.CONTENT_BASE_URL} target="_blank" rel="noreferrer">
             <ExternalLinkIcon className="mr-2 h-4 w-4" />
             <span>Document</span>
           </a>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <a href="https://github.com/dinsterizer/noteask" target="_blank">
+          <a href="https://github.com/dinsterizer/noteask" target="_blank" rel="noreferrer">
             <GithubIcon className="mr-2 h-4 w-4" />
             <span>Github</span>
           </a>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <a href="https://x.com/dinsterizer" target="_blank">
+          <a href="https://x.com/dinsterizer" target="_blank" rel="noreferrer">
             <TwitterIcon className="mr-2 h-4 w-4" />
             <span>Twitter</span>
           </a>

@@ -71,7 +71,7 @@ export function Component() {
           {match(query)
             .with({ status: 'pending' }, () => 'TODO pending')
             .with({ status: 'error' }, () => 'TODO error')
-            .with({ status: 'success' }, (query) => {
+            .with({ status: 'success' }, () => {
               return (
                 <form onSubmit={onSubmit} className="space-y-2">
                   <Input placeholder="Untitled" />
