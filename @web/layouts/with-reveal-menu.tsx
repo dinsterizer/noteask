@@ -3,7 +3,7 @@ import { ScrollArea } from '@web/components/ui/scroll-area'
 import { useLayoutEffect, useRef } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 
-export function WithRevealMenuLayout() {
+export function WithRevealMenuLayout(props: { children?: React.ReactNode }) {
   const location = useLocation()
   const containerRef = useRef<HTMLDivElement>(null)
   const revealMenuRef = useRef<HTMLDivElement>(null)
@@ -14,11 +14,13 @@ export function WithRevealMenuLayout() {
     const outer = containerRef.current.childNodes[1] as HTMLDivElement | undefined
     if (!outer) return
 
+    if (outer.scrollTop > revealMenuRef.current.clientHeight) return
+
     outer.scrollTo({
       top: revealMenuRef.current.clientHeight,
       behavior: 'instant',
     })
-  }, [location])
+  }, [location, props.children])
 
   return (
     <div>
@@ -28,9 +30,7 @@ export function WithRevealMenuLayout() {
             <RevealMenu showNotificationButton />
           </div>
         </div>
-        <div className="min-h-screen pb-8">
-          <Outlet />
-        </div>
+        <div className="min-h-screen pb-8">{props.children ? props.children : <Outlet />}</div>
         <div className="container">
           <RevealMenu />
         </div>

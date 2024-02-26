@@ -3,6 +3,7 @@ import type { Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
 
 const config = {
+  // important: '#root',
   darkMode: ['class'],
   content: [
     resolve(__dirname, './components/**/*.{js,ts,jsx,tsx}'),
