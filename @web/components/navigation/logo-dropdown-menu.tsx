@@ -27,13 +27,13 @@ export function LogoDropdownMenu({ children, ...props }: { children: React.React
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <a href="https://github.com/dinsterizer/noteask" target="_blank" rel="noreferrer">
+          <a href={env.GITHUB_REPOSITORY_URL} target="_blank" rel="noreferrer">
             <GithubIcon className="mr-2 h-4 w-4" />
             <span>Github</span>
           </a>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <a href="https://x.com/dinsterizer" target="_blank" rel="noreferrer">
+          <a href={env.TWITTER_AUTHOR_PROFILE_URL} target="_blank" rel="noreferrer">
             <TwitterIcon className="mr-2 h-4 w-4" />
             <span>Twitter</span>
           </a>

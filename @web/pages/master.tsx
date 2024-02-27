@@ -1,8 +1,7 @@
-import { Header } from '@web/components/navigation/header'
 import { NoteList } from '@web/components/note/list'
 import { SubscriptionCard } from '@web/components/subscription-card'
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@web/components/ui/resizable'
-import { WithRevealMenuLayout } from '@web/layouts/with-reveal-menu'
+import { ScrollArea } from '@web/components/ui/scroll-area'
 import { Helmet } from 'react-helmet-async'
 import { Outlet, useOutlet } from 'react-router-dom'
 import { useMedia } from 'react-use'
@@ -21,14 +20,10 @@ export function Component() {
       <ResizablePanelGroup direction="horizontal">
         {isWide ? (
           <ResizablePanel defaultSize={25} className="min-w-[280px]">
-            <WithRevealMenuLayout>
+            <ScrollArea className="h-screen">
               <div className="container max-w-5xl">
-                <div className="py-6">
-                  <Header />
-                </div>
-
                 <div className="pt-8">
-                  <NoteList />
+                  <NoteList />S
                 </div>
 
                 <section className="my-6 md:my-8 xl:my-12">
@@ -37,7 +32,7 @@ export function Component() {
                   </div>
                 </section>
               </div>
-            </WithRevealMenuLayout>
+            </ScrollArea>
           </ResizablePanel>
         ) : null}
 
