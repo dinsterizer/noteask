@@ -1,5 +1,13 @@
 import { sql } from 'drizzle-orm'
-import { mysqlTableCreator, timestamp, varchar, char, primaryKey } from 'drizzle-orm/mysql-core'
+import {
+  mysqlTableCreator,
+  timestamp,
+  varchar,
+  char,
+  primaryKey,
+  json,
+} from 'drizzle-orm/mysql-core'
+import type { JSONContent } from 'novel'
 
 /**
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
@@ -22,7 +30,8 @@ export const Notes = mysqlTable(
       .notNull()
       .default(sql`CURRENT_TIMESTAMP`),
 
-    title: varchar('title', { length: 255 }),
+    title: varchar('title', { length: 255 }).notNull(),
+    content: json('content').$type<JSONContent>().notNull(),
   },
   (t) => ({
     pk: primaryKey({ columns: [t.tenantId, t.id] }),

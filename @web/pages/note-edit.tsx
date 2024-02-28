@@ -9,8 +9,14 @@ import { trpc } from '@web/lib/trpc'
 import { JSONContent } from 'novel'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useDebounce } from 'react-use'
 import { match } from 'ts-pattern'
 import { z } from 'zod'
+
+const defaultJsonContent = {
+  type: 'doc',
+  content: [{ type: 'paragraph' }],
+}
 
 export function Component() {
   const params = z.object({ noteId: z.string() }).parse(useParams())
@@ -30,7 +36,8 @@ export function Component() {
             note: {
               tenantId: tenant.id,
               id: params.noteId,
-              title: null,
+              title: '',
+              content: defaultJsonContent,
               updatedAt: new Date(),
               createdAt: new Date(),
             },
@@ -39,11 +46,6 @@ export function Component() {
     },
   )
 
-  const [content, setContent] = useState<JSONContent>({
-    type: 'doc',
-    content: [{ type: 'paragraph' }],
-  })
-
   const createMutation = trpc.note.create.useMutation({
     onSuccess() {
       setParamNew(null)
@@ -51,25 +53,32 @@ export function Component() {
   })
   const updateMutation = trpc.note.update.useMutation()
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState<JSONContent>(defaultJsonContent)
 
-    if (paramNew !== null) {
-      createMutation.mutate({
-        note: {
-          id: params.noteId,
-          title: 'TODO title',
-        },
-      })
-    } else {
-      updateMutation.mutate({
-        note: {
-          id: params.noteId,
-          title: 'TODO title',
-        },
-      })
-    }
-  }
+  useDebounce(
+    () => {
+      if (paramNew !== null) {
+        createMutation.mutate({
+          note: {
+            id: params.noteId,
+            title: title,
+            content: content,
+          },
+        })
+      } else {
+        updateMutation.mutate({
+          note: {
+            id: params.noteId,
+            title: title,
+            content: content,
+          },
+        })
+      }
+    },
+    5_000,
+    [content, title],
+  )
 
   return (
     <ResizablePanel minSize={50}>
@@ -78,12 +87,23 @@ export function Component() {
           {match(query)
             .with({ status: 'pending' }, () => 'TODO pending')
             .with({ status: 'error' }, () => 'TODO error')
-            .with({ status: 'success' }, () => {
+            .with({ status: 'success' }, (query) => {
               return (
-                <form onSubmit={onSubmit} className="space-y-2">
-                  <Input placeholder="Untitled" />
+                <form onSubmit={(e) => e.preventDefault()} className="space-y-2">
+                  <Input
+                    name="name"
+                    maxLength={255}
+                    placeholder="Untitled"
+                    defaultValue={query.data.note.title}
+                    onChange={(e) => {
+                      setTitle(e.target.value)
+                    }}
+                  />
 
-                  <TailwindEditor content={content} setContent={setContent} />
+                  <TailwindEditor
+                    initialContent={query.data.note.content}
+                    onContentUpdate={setContent}
+                  />
 
                   <Button>Save</Button>
                 </form>

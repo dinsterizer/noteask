@@ -34,6 +34,7 @@
     "@total-typescript/ts-reset": "^0.5.1",
     "@types/node": "^20.11.13",
     "drizzle-kit": "^0.20.14",
-    "mysql2": "^3.9.1"
+    "mysql2": "^3.9.1",
+    "novel": "^0.2.6"
   }
 }

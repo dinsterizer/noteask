@@ -20,11 +20,11 @@ import { useState } from 'react'
 const extensions = [...defaultExtensions]
 
 type Props = {
-  content: JSONContent
-  setContent: (newContent: JSONContent) => void
+  initialContent: JSONContent
+  onContentUpdate: (newContent: JSONContent) => void
 }
 
-export function TailwindEditor({ content, setContent }: Props) {
+export function TailwindEditor({ initialContent: content, onContentUpdate: setContent }: Props) {
   const [openNode, setOpenNode] = useState(false)
   const [openLink, setOpenLink] = useState(false)
   const [openColor, setOpenColor] = useState(false)
