@@ -1,11 +1,13 @@
+import { TailwindEditor } from '@web/components/tailwind-editor'
 import { Button } from '@web/components/ui/button'
 import { Input } from '@web/components/ui/input'
 import { ResizablePanel } from '@web/components/ui/resizable'
-import { Textarea } from '@web/components/ui/textarea'
 import { useSearchParam } from '@web/hooks/use-search-param'
 import { WithPageMenuLayout } from '@web/layouts/with-page-menu'
 import { useTenant } from '@web/lib/auth'
 import { trpc } from '@web/lib/trpc'
+import { JSONContent } from 'novel'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { match } from 'ts-pattern'
 import { z } from 'zod'
@@ -36,6 +38,11 @@ export function Component() {
       enabled: isEnabledQuery,
     },
   )
+
+  const [content, setContent] = useState<JSONContent>({
+    type: 'doc',
+    content: [{ type: 'paragraph' }],
+  })
 
   const createMutation = trpc.note.create.useMutation({
     onSuccess() {
@@ -76,7 +83,7 @@ export function Component() {
                 <form onSubmit={onSubmit} className="space-y-2">
                   <Input placeholder="Untitled" />
 
-                  <Textarea placeholder="Type something..." />
+                  <TailwindEditor content={content} setContent={setContent} />
 
                   <Button>Save</Button>
                 </form>
