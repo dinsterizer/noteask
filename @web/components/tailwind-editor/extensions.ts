@@ -3,6 +3,7 @@ import type * as _A from '.pnpm/@tiptap+extension-horizontal-rule@2.2.4_@tiptap+
 import type * as _B from '.pnpm/@tiptap+extension-link@2.2.4_@tiptap+core@2.2.4_@tiptap+pm@2.2.4/node_modules/@tiptap/extension-link'
 import type * as _C from '.pnpm/@tiptap+extension-placeholder@2.0.3_@tiptap+core@2.2.4_@tiptap+pm@2.2.4/node_modules/@tiptap/extension-placeholder'
 import type * as _D from '.pnpm/@tiptap+starter-kit@2.2.4_@tiptap+pm@2.2.4/node_modules/@tiptap/starter-kit'
+import { cn } from '@web/lib/utils'
 import { cx } from 'class-variance-authority'
 import {
   TiptapImage,
@@ -52,7 +53,23 @@ const taskList = TaskList.configure({
 })
 const taskItem = TaskItem.configure({
   HTMLAttributes: {
-    class: cx('flex items-start my-4'),
+    class: cn(
+      'flex items-center my-4 gap-1',
+      '[&>label]:flex',
+      '[&>label]:items-center',
+      "[&>label>input[type='checkbox']]:size-4",
+      "[&>label>input[type='checkbox']]:rounded",
+      "[&>label>input[type='checkbox']]:border",
+      "[&>label>input[type='checkbox']]:border-primary",
+      "[&>label>input[type='checkbox']]:border-primary",
+      "[&>label>input[type='checkbox']]:focus-visible:outline-none",
+      "[&>label>input[type='checkbox']]:focus-visible:ring-1",
+      "[&>label>input[type='checkbox']]:focus-visible:ring-ring",
+      "[&>label>input[type='checkbox']]:disabled:cursor-not-allowed",
+      "[&>label>input[type='checkbox']]:disabled:disabled:opacity-50",
+      "[&>label>input[type='checkbox']]:data-[state=checked]:bg-primary",
+      "[&>label>input[type='checkbox']]:data-[state=checked]:text-primary-foreground",
+    ),
   },
   nested: true,
 })
@@ -76,12 +93,12 @@ const starterKit = StarterKit.configure({
   },
   listItem: {
     HTMLAttributes: {
-      class: cx('leading-normal -mb-2'),
+      class: cx('leading-normal -mb-2 bg [&::marker]:text-muted-foreground'),
     },
   },
   blockquote: {
     HTMLAttributes: {
-      class: cx('border-l-4 border-primary'),
+      class: cx('border-l-4'),
     },
   },
   codeBlock: {

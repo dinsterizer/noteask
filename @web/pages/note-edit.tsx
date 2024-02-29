@@ -1,6 +1,4 @@
 import { TailwindEditor } from '@web/components/tailwind-editor'
-import { Button } from '@web/components/ui/button'
-import { Input } from '@web/components/ui/input'
 import { ResizablePanel } from '@web/components/ui/resizable'
 import { useSearchParam } from '@web/hooks/use-search-param'
 import { WithPageMenuLayout } from '@web/layouts/with-page-menu'
@@ -83,15 +81,16 @@ export function Component() {
   return (
     <ResizablePanel minSize={50}>
       <WithPageMenuLayout>
-        <div className="p-4">
+        <div className="p-4 @container">
           {match(query)
             .with({ status: 'pending' }, () => 'TODO pending')
             .with({ status: 'error' }, () => 'TODO error')
             .with({ status: 'success' }, (query) => {
               return (
-                <form onSubmit={(e) => e.preventDefault()} className="space-y-2">
-                  <Input
+                <form onSubmit={(e) => e.preventDefault()} className="p-3 @3xl:p-12">
+                  <input
                     name="name"
+                    className="outline-none text-4xl"
                     maxLength={255}
                     placeholder="Untitled"
                     defaultValue={query.data.note.title}
@@ -100,12 +99,12 @@ export function Component() {
                     }}
                   />
 
-                  <TailwindEditor
-                    initialContent={query.data.note.content}
-                    onContentUpdate={setContent}
-                  />
-
-                  <Button>Save</Button>
+                  <div className="mt-8">
+                    <TailwindEditor
+                      initialContent={query.data.note.content}
+                      onContentUpdate={setContent}
+                    />
+                  </div>
                 </form>
               )
             })

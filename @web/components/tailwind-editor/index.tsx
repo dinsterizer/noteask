@@ -5,6 +5,7 @@ import { LinkSelector } from './selectors/link-selector'
 import { NodeSelector } from './selectors/node-selector'
 import { TextButtons } from './selectors/text-buttons'
 import { suggestionItems } from './slash-command'
+import { cn } from '@web/lib/utils'
 import {
   EditorBubble,
   EditorCommand,
@@ -37,7 +38,7 @@ export function TailwindEditor({ initialContent: content, onContentUpdate: setCo
         editorProps={{
           ...defaultEditorProps,
           attributes: {
-            class: `prose-lg prose-stone dark:prose-invert prose-headings:font-title font-default focus:outline-none max-w-full`,
+            class: cn(`prose-sm prose-stone dark:prose-invert focus:outline-none max-w-full`),
           },
         }}
         onUpdate={({ editor }) => {
