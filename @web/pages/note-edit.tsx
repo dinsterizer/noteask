@@ -4,10 +4,11 @@ import { useSearchParam } from '@web/hooks/use-search-param'
 import { WithPageMenuLayout } from '@web/layouts/with-page-menu'
 import { useTenant } from '@web/lib/auth'
 import { trpc } from '@web/lib/trpc'
+import equal from 'fast-deep-equal/react'
 import { JSONContent } from 'novel'
-import { useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useDebounce } from 'react-use'
+import { useBeforeUnload, useDebounce } from 'react-use'
 import { match } from 'ts-pattern'
 import { z } from 'zod'
 
@@ -51,32 +52,57 @@ export function Component() {
   })
   const updateMutation = trpc.note.update.useMutation()
 
+  const readyToSaveRef = useRef(false)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState<JSONContent>(defaultJsonContent)
 
+  useEffect(() => {
+    if (readyToSaveRef.current) return
+    if (query.status !== 'success') return
+
+    setTitle(query.data.note.title)
+    setContent(query.data.note.content)
+    readyToSaveRef.current = true
+  }, [query])
+
+  const note = useMemo(
+    () => ({
+      id: params.noteId,
+      title: title,
+      content: content,
+    }),
+    [params.noteId, title, content],
+  )
+
   useDebounce(
     () => {
+      if (!readyToSaveRef.current) return
+
       if (paramNew !== null) {
         createMutation.mutate({
-          note: {
-            id: params.noteId,
-            title: title,
-            content: content,
-          },
+          note,
         })
       } else {
         updateMutation.mutate({
-          note: {
-            id: params.noteId,
-            title: title,
-            content: content,
-          },
+          note,
         })
       }
     },
-    5_000,
-    [content, title],
+    1000,
+    [note],
   )
+
+  useBeforeUnload(() => {
+    if (createMutation.status === 'success' && equal(createMutation.variables.note, note)) {
+      return false
+    }
+
+    if (updateMutation.status === 'success' && equal(updateMutation.variables.note, note)) {
+      return false
+    }
+
+    return true
+  }, 'You have unsaved changes, are you sure?')
 
   return (
     <ResizablePanel minSize={50}>
